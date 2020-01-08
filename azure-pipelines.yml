@@ -31,4 +31,6 @@ steps:
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
+    testAssemblyVer2: 'Renci.SshNet.Tests.dll'
     configuration: '$(buildConfiguration)'
+    testFiltercriteria: 'TestCategory!=integration&TestCategory!=LongRunning'
