@@ -131,7 +131,7 @@ namespace Renci.SshNet.Abstractions
         }
 #endif
 
-#if FEATURE_HASH_RIPEMD160_CREATE || FEATURE_HASH_RIPEMD160_MANAGED
+#if NETFRAMEWORK
         public static System.Security.Cryptography.RIPEMD160 CreateRIPEMD160()
         {
 #if FEATURE_HASH_RIPEMD160_CREATE
@@ -145,7 +145,7 @@ namespace Renci.SshNet.Abstractions
         {
             return new global::SshNet.Security.Cryptography.RIPEMD160();
         }
-#endif // FEATURE_HASH_RIPEMD160
+#endif // NETFRAMEWORK
 
 #if FEATURE_HMAC_MD5
         public static System.Security.Cryptography.HMACMD5 CreateHMACMD5(byte[] key)
@@ -257,7 +257,7 @@ namespace Renci.SshNet.Abstractions
         }
 #endif // FEATURE_HMAC_SHA512
 
-#if FEATURE_HMAC_RIPEMD160
+#if NETFRAMEWORK
         public static System.Security.Cryptography.HMACRIPEMD160 CreateHMACRIPEMD160(byte[] key)
         {
             return new System.Security.Cryptography.HMACRIPEMD160(key);
@@ -267,6 +267,6 @@ namespace Renci.SshNet.Abstractions
         {
             return new global::SshNet.Security.Cryptography.HMACRIPEMD160(key);
         }
-#endif // FEATURE_HMAC_RIPEMD160
+#endif // NETFRAMEWORK
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System;
-#if FEATURE_BINARY_SERIALIZATION
+#if !NETSTANDARD1_3
 using System.Runtime.Serialization;
-#endif // FEATURE_BINARY_SERIALIZATION
+#endif // !NETSTANDARD1_3
 
 namespace Renci.SshNet.Common
 {
     /// <summary>
     /// The exception that is thrown when SSH exception occurs.
     /// </summary>
-#if FEATURE_BINARY_SERIALIZATION
+#if !NETSTANDARD1_3
     [Serializable]
-#endif // FEATURE_BINARY_SERIALIZATION
+#endif // !NETSTANDARD1_3
     public class SshException : Exception
     {
         /// <summary>
@@ -39,7 +39,7 @@ namespace Renci.SshNet.Common
         {
         }
 
-#if FEATURE_BINARY_SERIALIZATION
+#if !NETSTANDARD1_3
         /// <summary>
         /// Initializes a new instance of the <see cref="SshException"/> class.
         /// </summary>
@@ -51,6 +51,6 @@ namespace Renci.SshNet.Common
             : base(info, context)
         {
         }
-#endif // FEATURE_BINARY_SERIALIZATION
+#endif // !NETSTANDARD1_3
     }
 }

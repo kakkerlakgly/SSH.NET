@@ -173,7 +173,7 @@ namespace Renci.SshNet.Security.Cryptography
 
             if (disposing)
             {
-                var hash = _hash;
+                IDisposable hash = _hash;
                 if (hash != null)
                 {
                     hash.Dispose();

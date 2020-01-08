@@ -51,7 +51,11 @@ namespace Renci.SshNet.NetConf
 
         public XmlDocument SendReceiveRpc(XmlDocument rpc, bool automaticMessageIdHandling)
         {
+#if NET35
+            _data.Length = 0;         
+#else
             _data.Clear();
+#endif
 
             XmlNamespaceManager nsMgr = null;
             if (automaticMessageIdHandling)
@@ -94,7 +98,11 @@ namespace Renci.SshNet.NetConf
 
         protected override void OnChannelOpen()
         {
+#if NET35
+            _data.Length = 0;
+#else
             _data.Clear();
+#endif
 
             var message = string.Format("{0}{1}", ClientCapabilities.InnerXml, Prompt);
 
@@ -117,8 +125,12 @@ namespace Renci.SshNet.NetConf
                 }
                 try
                 {
-                    chunk = _data.ToString(); 
+                    chunk = _data.ToString();
+#if NET35
+                    _data.Length = 0;
+#else
                     _data.Clear();
+#endif
 
                     ServerCapabilities = new XmlDocument();
                     ServerCapabilities.LoadXml(chunk.Replace(Prompt, ""));
@@ -166,7 +178,11 @@ namespace Renci.SshNet.NetConf
                 }
                 
                 chunk = _data.ToString();
+#if NET35
+                _data.Length = 0;
+#else
                 _data.Clear();
+#endif
 
                 _rpcReply.Append(chunk.Replace(Prompt, ""));
                 _rpcReplyReceived.Set();
