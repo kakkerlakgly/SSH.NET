@@ -21,7 +21,7 @@ namespace Renci.SshNet.Tests.Classes
             _remotePathTransformationMock = new Mock<IRemotePathTransformation>(MockBehavior.Strict);
             _sessionMock = new Mock<ISession>(MockBehavior.Strict);
             _channelSessionMock = new Mock<IChannelSession>(MockBehavior.Strict);
-            _pipeStreamMock = new Mock<PipeStream>(MockBehavior.Strict);
+            _pipeStreamMock = new Mock<PipeStream>();
         }
 
         protected abstract void SetupMocks();
